@@ -1,0 +1,54 @@
+<hazelcast   xsi:schemaLocation="http://www.hazelcast.com/schema/config http://www.hazelcast.com/schema/config/hazelcast-config-3.8.xsd" xmlns="http://www.hazelcast.com/schema/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">    
+    <network>
+        <join>
+            <multicast enabled="true"/>
+        </join>
+    </network>    
+    <map name="testmap">
+        <time-to-live-seconds>10</time-to-live-seconds>
+    </map>    
+    <map name="testmap*">
+        <time-to-live-seconds>10</time-to-live-seconds>
+    </map>    
+    <!-- Wildcard
+        Map map1 = hz.getMap("testmap1");
+        Map map2 = hz.getMap("testmap2");
+    -->
+    
+    <!-- Ambiguous
+    <map name="m*">
+        <time-to-live-seconds>10</time-to-live-seconds>
+    </map>
+    <map name="ma*">
+        <time-to-live-seconds>10</time-to-live-seconds>
+    </map>
+    -->
+    
+    <!-- Provides properties configuration
+    Also could be done via command line 
+    -Dproperty-name=property-value    
+    
+    Properties in .xml config could not be overrided programmaticaly
+    -->
+    <properties>
+        <property name="hazelcast.icmp.enabled">true</property>
+    </properties>
+    
+    <!-- Logging
+    jdk, log4, sl4j or none.
+    jdk is default
+    -Dhazelcast.logging.type=log4j
+    
+    <properties>
+        <property name="hazelcast.logging.type">log4j</property>
+    </properties>    
+    
+    -->
+    
+    
+    <!-- Supports property injections -->
+    <executor-service name="exec">
+        <pool-size>${pool.size}</pool-size>
+    </executor-service>
+    
+</hazelcast>
