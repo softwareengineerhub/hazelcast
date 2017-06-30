@@ -9,14 +9,14 @@
     <map name="binaryMap">
         <in-memory-format>BINARY</in-memory-format>
     </map>
-    <map name="articles">
+    <map name="articles1">
         <max-size policy="PER_NODE">2</max-size>
         <eviction-policy>LRU</eviction-policy>
-        <max-idle-seconds>2</max-idle-seconds>
-        <near-cache>
+        <max-idle-seconds>60</max-idle-seconds>
+        <!--<near-cache>
             <max-size>10000</max-size>
             <eviction-policy>LRU</eviction-policy>
             <max-idle-seconds>60</max-idle-seconds>
-        </near-cache>
+        </near-cache>-->
     </map>
 </hazelcast>
