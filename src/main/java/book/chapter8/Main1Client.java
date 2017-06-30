@@ -9,6 +9,7 @@ import com.hazelcast.client.HazelcastClient;
 import com.hazelcast.client.config.ClientConfig;
 import com.hazelcast.core.HazelcastInstance;
 import com.hazelcast.core.IMap;
+import java.util.Map;
 
 /**
  *
@@ -17,11 +18,17 @@ import com.hazelcast.core.IMap;
 public class Main1Client {
     
     public static void main(String[] args){
-        ClientConfig clientConfig = new ClientConfig().addAddress("127.0.0.1");
-        HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient(clientConfig);
+        ClientConfig clientConfig = new ClientConfig().addAddress("192.168.0.114");
+        //HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient(clientConfig);
+        HazelcastInstance hazelcastInstance = HazelcastClient.newHazelcastClient();
         
-        IMap map=hazelcastInstance.getMap("map");
-        System.out.println(map.size());
+        //IMap map=hazelcastInstance.getMap("events.map");
+        //System.out.println(map.size());
+        
+        
+        
+        Map<Integer, String> customers = hazelcastInstance.getMap( "customers" );
+        customers.remove("ttt");
     }
     
 }

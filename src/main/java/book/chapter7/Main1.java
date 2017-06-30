@@ -19,8 +19,9 @@ public class Main1 {
     
     public static void main(String[] args) throws InterruptedException{
         HazelcastInstance instance = Hazelcast.newHazelcastInstance();
+        
         ITopic topic = instance.getTopic("topic");
-        topic.publish("Hello!!!");
+        topic.publish("Hello!!!");        
         Thread.sleep(3000);
         topic.addMessageListener(new MessageListener() {
             @Override

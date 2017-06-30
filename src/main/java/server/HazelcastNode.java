@@ -50,7 +50,7 @@ public class HazelcastNode {
             try {
                 Thread.sleep(1000);
                 System.out.println( "Map Size:" + customers.size() );
-                customers.put(customers.size()+10, "Data");
+               // customers.put(customers.size()+10, "Data");
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
